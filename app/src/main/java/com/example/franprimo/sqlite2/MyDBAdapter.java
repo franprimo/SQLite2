@@ -6,9 +6,12 @@ package com.example.franprimo.sqlite2;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 /**
  * Created by FranPrimo on 4/12/15.
@@ -81,6 +84,32 @@ public class MyDBAdapter {
         newValues.put(CURSO, curso);
         newValues.put(NOTA, nota);
         db.insert(DATABASE_TABLE_2, null, newValues);
+    }
+
+    //Metodo que devuelve un ArrayList<String> con los alumnos que hay en la tabla alumnos
+    public ArrayList<String> recuperarAlumnos(){
+        ArrayList<String> alumnos = new ArrayList<String>();
+        Cursor cursor = db.query(DATABASE_TABLE_2, null, null, null, null, null, null);
+        if(cursor != null && cursor.moveToFirst()){
+            do{
+                alumnos.add(cursor.getString(0)+" "+cursor.getString(1));
+            }while(cursor.moveToNext());
+        }
+
+        return alumnos;
+    }
+
+    //Metodo que devuelve un ArrayList<String> con los profesores que hay en la tabla profesores
+    public ArrayList<String> recuperarProfesores(){
+        ArrayList<String> profesores = new ArrayList<String>();
+        Cursor cursor = db.query(DATABASE_TABLE, null, null, null, null, null, null);
+        if(cursor != null && cursor.moveToFirst()) {
+            do{
+                profesores.add(cursor.getString(0)+" "+cursor.getString(1));
+            }while(cursor.moveToNext());
+        }
+
+        return profesores;
     }
 
     private static class MyDbHelper extends SQLiteOpenHelper {

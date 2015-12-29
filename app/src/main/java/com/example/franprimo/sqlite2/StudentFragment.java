@@ -2,6 +2,7 @@ package com.example.franprimo.sqlite2;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -46,6 +47,8 @@ public class StudentFragment extends Fragment {
                 String notaMed = nota.getText().toString();
 
                 dBAdapter.insertarAlumno(nombre, age, cic, cur, notaMed);
+
+
             }
         });
 
