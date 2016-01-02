@@ -30,7 +30,7 @@ public class ConsultasAvanzadasFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         final EditText cicloInput = (EditText) getActivity().findViewById(R.id.cicloInput);
-        EditText cursoInput = (EditText) getActivity().findViewById(R.id.editText);
+        final EditText cursoInput = (EditText) getActivity().findViewById(R.id.editText);
         Button button = (Button) getActivity().findViewById(R.id.button);
         final ListView listaAvanzada = (ListView) getActivity().findViewById(R.id.listView2);
 
@@ -43,6 +43,14 @@ public class ConsultasAvanzadasFragment extends Fragment {
                     myDB.open();
                     ArrayList<String> listadoPorCiclo = myDB.recuperarAlumCondicion(param);
                     MenuAdapter adapter = new MenuAdapter(getActivity(), listadoPorCiclo);
+                    listaAvanzada.setAdapter(adapter);
+                }
+                if (cursoInput.getText() != null) {
+                    String curso = cursoInput.getText().toString();
+                    MyDBAdapter myDB = new MyDBAdapter(getActivity());
+                    myDB.open();
+                    ArrayList<String> listadoPorCurso = myDB.recuperarAlumCondicion2(curso);
+                    MenuAdapter adapter = new MenuAdapter(getActivity(), listadoPorCurso);
                     listaAvanzada.setAdapter(adapter);
                 }
             }

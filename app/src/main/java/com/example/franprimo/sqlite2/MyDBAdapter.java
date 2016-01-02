@@ -116,8 +116,22 @@ public class MyDBAdapter {
         ArrayList<String> alumnos = new ArrayList<String>();
         Cursor cursor = db.query(DATABASE_TABLE_2, null, "ciclo='"+parametro+"'", null, null, null, null);
         if(cursor != null && cursor.moveToFirst()){
-            alumnos.add(cursor.getString(0)+ " " +cursor.getString(1));
-        }while (cursor.moveToNext());
+            do{
+                alumnos.add(cursor.getString(0)+ " " +cursor.getString(1));
+            }while (cursor.moveToNext());
+        }
+
+        return alumnos;
+    }
+
+    public ArrayList<String> recuperarAlumCondicion2(String curso){
+        ArrayList<String> alumnos = new ArrayList<String>();
+        Cursor cursor = db.query(DATABASE_TABLE_2, null, "curso='"+curso+"'", null, null, null, null);
+        if(cursor != null && cursor.moveToFirst()){
+            do{
+                alumnos.add(cursor.getString(0)+ " " +cursor.getString(1));
+            }while (cursor.moveToNext());
+        }
 
         return alumnos;
     }
