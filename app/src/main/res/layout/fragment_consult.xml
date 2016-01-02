@@ -16,15 +16,33 @@
             android:layout_height="wrap_content"
             android:text="Alumnos"
             android:id="@+id/alumRadio"
-            android:checked="false" />
+            android:checked="false"
+            android:textSize="20dp" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profesores"
             android:id="@+id/profRadio"
-            android:checked="false" />
+            android:checked="false"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Todos"
+            android:id="@+id/todosRadio"
+            android:checked="false"
+            android:textSize="20dp" />
+
     </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Otras busquedas"
+        android:id="@+id/buscaButton"
+        android:layout_gravity="center_horizontal" />
 
     <ListView
         android:layout_width="match_parent"

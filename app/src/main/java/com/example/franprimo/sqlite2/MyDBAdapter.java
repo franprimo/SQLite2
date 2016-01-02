@@ -112,6 +112,16 @@ public class MyDBAdapter {
         return profesores;
     }
 
+    public ArrayList<String> recuperarAlumCondicion(String parametro){
+        ArrayList<String> alumnos = new ArrayList<String>();
+        Cursor cursor = db.query(DATABASE_TABLE_2, null, "ciclo='"+parametro+"'", null, null, null, null);
+        if(cursor != null && cursor.moveToFirst()){
+            alumnos.add(cursor.getString(0)+ " " +cursor.getString(1));
+        }while (cursor.moveToNext());
+
+        return alumnos;
+    }
+
     private static class MyDbHelper extends SQLiteOpenHelper {
 
         public MyDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

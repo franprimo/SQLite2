@@ -2,11 +2,13 @@ package com.example.franprimo.sqlite2;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Main2Activity extends Activity {
+public class Main2Activity extends Activity implements ConsultFragment.ButtonOtrasBusquedasListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,13 @@ public class Main2Activity extends Activity {
             transaction.replace(R.id.fragment_container, df);
             transaction.commit();
         }
+    }
+
+    public void onButtonPressed(){
+        ConsultasAvanzadasFragment caf = new ConsultasAvanzadasFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, caf);
+        transaction.commit();
     }
 
     @Override

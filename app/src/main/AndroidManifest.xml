@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.franprimo.sqlite2">
+    package="com.example.franprimo.sqlite2" >
 
     <application
         android:allowBackup="true"
